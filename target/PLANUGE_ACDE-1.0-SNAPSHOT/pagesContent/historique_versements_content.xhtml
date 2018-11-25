@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Tous les Versements</h3>
+                        </div>
+                        <h:form id="versementForm">
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <div class="dataTables_length" id="example1_length">
+                                                <label>Show 
+                                                    <select name="example1_length" aria-controls="example1" class="form-control input-sm">
+                                                        <option value="10">10</option>
+                                                        <option value="25">25</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select> entries
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <h:commandLink action="#{adminBean.reloadVersements()}">
+                                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                                            </h:commandLink>
+                                            <h:commandLink>
+                                                <button id="newVersement" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
+                                                    <i class="fa fa-plus"/> Nouveau
+                                                </button>
+                                                <f:ajax render="newVersementForm:modal-default"/>
+                                            </h:commandLink>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div id="example1_filter" class="dataTables_filter">
+                                                <label>Search:
+                                                    <input class="form-control input-sm" placeholder="" aria-controls="example1" type="search"/>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="table-responsive">
+                                                <h:dataTable value="#{adminBean.versementList}" var="v" id="dataTable" class="table table-bordered table-striped dataTable" role="grid">
+                                                    <h:column>
+                                                        <f:facet name="header" id="iden"><input type="checkbox" id="cheche" style="margin-right: 10px;"/><h:outputText value="#"/></f:facet>
+                                                        <h:panelGroup>
+                                                            <h:selectBooleanCheckbox class="pull-left" onchange='isAllChecked("versementForm:dataTable")' style="margin-right: 10px;">
+                                                                <f:ajax />
+                                                            </h:selectBooleanCheckbox>
+                                                        </h:panelGroup>
+                                                        <h:outputText value="#{v.id}" />
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header"><h:outputText value="Année"/></f:facet>
+                                                        <h:outputText value="#{adminBean.getYear(v.dateversement.year)}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header"><h:outputText value="Mois"/></f:facet>
+                                                        <h:outputText value="#{adminBean.getMonth(v.dateversement.month)}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header"><h:outputText value="Type Versement" /></f:facet>
+                                                        <h:outputText value="#{v.type.label}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header"><h:outputText value="Montant" /></f:facet>
+                                                        <h:outputText value="#{v.montant}"/>
+                                                    </h:column>
+                                                    <h:column>
+                                                        <f:facet name="header"><h:outputText value="Membre" /></f:facet>
+                                                        <h:outputText value="#{v.idmembre.nom} #{v.idmembre.prenom}"/>
+                                                    </h:column>
+                                                </h:dataTable>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-7 col-sm-5">
+                                            <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>                                            
+                                        </div>
+                                        <div class="col-lg-5 col-sm-7">
+                                            <div class="skin-purple-light dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                                <ul class="skin-purple-light pagination" style="margin: 0px;">
+                                                    <li class="paginate_button previous disabled" id="example1_previous">
+                                                        <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a>
+                                                    </li>
+                                                    <li class="paginate_button active">
+                                                        <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
+                                                    </li>
+                                                    <li class="paginate_button ">
+                                                        <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a>
+                                                    </li>
+                                                    <li class="paginate_button ">
+                                                        <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a>
+                                                    </li>
+                                                    <li class="paginate_button ">
+                                                        <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a>
+                                                    </li><li class="paginate_button ">
+                                                        <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a>
+                                                    </li>
+                                                    <li class="paginate_button ">
+                                                        <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a>
+                                                    </li>
+                                                    <li class="paginate_button next" id="example1_next">
+                                                        <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+            
+            <!--Nouveau versement-->
+            <h:form id="newVersementForm">
+                <div class="modal fade" id="modal-default">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span></button>
+                                <h4 class="modal-title">Effectuer un nouveau versement</h4>
+                            </div>
+                            <div class="modal-body bg-gray-light">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="info-box">
+                                            <span class="info-box-icon bg-gray"><i class="ion ion-person" style="color: #bbb"></i></span>
+                                            <div class="info-box-content">
+                                                <span class="info-box-text">Membre</span>
+                                                <h:outputFormat value="#{adminBean.membreSelected.prenom} #{adminBean.membreSelected.nom}" class="info-box-number" id="nomMembreLabel"/>
+                                                <div class="">
+                                                    <div class="btn-group open">
+                                                        <button class="btn btn-box-tool dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">Changer &nbsp;<i class="fa fa-caret-down"/></button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <ui:repeat value="#{adminBean.membreList}" var="mbr">
+                                                                <li>
+                                                                    <h:commandLink action="#{adminBean.changeMembre(mbr)}" id="changeMembreSelect">
+                                                                        <i class="ion ion-android-person"/>
+                                                                        <span>#{mbr.prenom} #{mbr.nom}</span>
+                                                                        <f:ajax render="newVersementForm:nomMembreLabel"/>
+                                                                    </h:commandLink>
+                                                                </li>
+                                                            </ui:repeat>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+<!--                                                <div id="the-basics">
+                                                    <input type="text" class="form-control typeahead" placeholder="Rechercher..." style="width: 120px"/>
+                                                    <button class="btn" style="z-index: 10;float: right;position: absolute"><i class="fa fa-arrow-right"/></button>
+                                                </div>-->
+                                            </div>
+                                            <!-- /.info-box-content -->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon" style="background-color: rgb(60, 141, 188); border: 1px solid rgb(54, 127, 169); color: #fff"><b>Type</b></span>
+                                            <h:selectOneMenu class="form-control ignore" id="selectTypeVersement" value="#{adminBean.type}">
+                                                <f:selectItem/>
+                                                <f:selectItems value="#{adminBean.typeVersementList}" var="type" itemLabel="#{type.label}" itemValue="#{type.id}"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon" style="background-color: rgb(243, 156, 18); border: 1px solid rgb(224, 142, 11); color: #fff"><b>Montant</b></span>
+                                            <div class="form-group">
+                                                <h:outputLabel class="control-label" for="montant" rendered="false"></h:outputLabel>
+                                                <h:inputText a:placeholder="en Fcfa" class="form-control" id="montant" value="#{adminBean.montant}"/>
+                                                <h:message for="montant" class="help-block"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <h:commandLink class="btn btn-success" id="btnTerminer" action="#{adminBean.nouveauVersement()}">
+                                    <i class="fa fa-check"/> Terminer
+                                </h:commandLink>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </h:form>
+            
+        </ui:composition>
+    </h:body>
+</html>

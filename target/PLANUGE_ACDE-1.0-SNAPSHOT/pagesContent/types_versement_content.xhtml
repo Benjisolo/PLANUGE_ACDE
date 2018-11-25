@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <h:form id="typeVersementForm">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="box">
+                            <div class="box-header with-border">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <h3 class="box-title">Types de Versements</h3>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h:commandLink action="#{adminBean.reloadTypeVersements()}">
+                                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                                        </h:commandLink>
+                                        <h:commandLink>
+                                            <button id="newVersement" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
+                                                <i class="fa fa-plus"/> Nouveau
+                                            </button>
+                                            <f:ajax render="newTypeVersementForm:modal-default"/>
+                                        </h:commandLink>
+                                    </div>
+                                </div>
+                            </div>
+                            <h:form id="versementForm">
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <ul class="products-list product-list-in-box">
+                                        <ui:repeat value="#{adminBean.typeVersementList}" var="tv">
+                                            <li class="item">
+    <!--                                            <div class="product-img">
+                                                     <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                                </div>-->
+                                                <div class="product-info">
+                                                    <a href="javascript:void(0)" class="product-title">#{tv.id}
+                                                        <span class="label label-danger pull-right"><i class="fa fa-close"/></span>
+                                                        <span class="label label-warning pull-right"><i class="fa fa-pencil"/></span>
+                                                    </a>
+                                                    <span class="product-description">
+                                                        #{tv.label}
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <!-- /.item -->
+                                        </ui:repeat>
+                                    </ul>
+                                </div>
+                                <!-- /.box-body -->
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+            
+            <!--Nouveau type de versement-->
+            <h:form id="newTypeVersementForm">
+                <div class="modal fade" id="modal-default">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span></button>
+                                <h4 class="modal-title">Effectuer un nouveau type versement</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><b>Label</b></span>
+                                            <div class="form-group">
+                                                <h:outputLabel class="control-label" for="label" rendered="false"></h:outputLabel>
+                                                <h:inputText a:placeholder="ex: Inscription..." value="#{adminBean.labelType}" class="form-control" id="label"/>
+                                                <h:message for="label" class="help-block"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><b>id</b></span>
+                                            <div class="form-group">
+                                                <h:outputLabel class="control-label" for="short" rendered="false"></h:outputLabel>
+                                                <h:inputText a:placeholder="ex: ins" value="#{adminBean.idType}" class="form-control" id="short"/>
+                                                <h:message for="short" class="help-block"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><b>Description</b></span>
+                                            <div class="form-group">
+                                                <h:outputLabel class="control-label" for="description" rendered="false"></h:outputLabel>
+                                                <h:inputText class="form-control" id="description"/>
+                                                <h:message for="description" class="help-block"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <h:commandLink class="btn btn-success" id="btnTerminer" action="#{adminBean.newTypeVersement()}">
+                                    <i class="fa fa-check"/> Terminer
+                                </h:commandLink>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </h:form>
+            
+        </ui:composition>
+    </h:body>
+</html>

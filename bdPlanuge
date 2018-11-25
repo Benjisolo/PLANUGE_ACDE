@@ -1,0 +1,148 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.3
+-- Dumped by pg_dump version 10.3
+
+-- Started on 2018-07-10 22:06:14
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2206 (class 0 OID 43668)
+-- Dependencies: 203
+-- Data for Name: epargne; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2207 (class 0 OID 43674)
+-- Dependencies: 204
+-- Data for Name: membres; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.membres (matricule, activiteprofessionelle, adresse, adresseemployeur, dateadhesion, datedelivrancecni, datenaiss, email, fonction, langue1, lieuactiviteprof, lieuadhesion, lieudelivrancecni, lieuexercicefonction, lieunaiss, nom, nombreenfantlegitime, nombrepersonneacharge, nomconjoint, nomemployeur, nommere, nompere, numcni, numtel1, numtel2, prenom, pwd, raisondadhesion, regimematrimonial, residencemere, residencepere, sexe, situationmatrimoniale, villeresidence) VALUES ('18JUN760', '', '', '', NULL, '2018-06-27', '2018-06-27', '', NULL, 'Francais', '', '', '', NULL, '', 'ou okjh', 0, 0, '', '', '', '', NULL, NULL, NULL, 'hjklk', 'v021', '', NULL, '', '', 'M', 'Célibataire', '');
+INSERT INTO public.membres (matricule, activiteprofessionelle, adresse, adresseemployeur, dateadhesion, datedelivrancecni, datenaiss, email, fonction, langue1, lieuactiviteprof, lieuadhesion, lieudelivrancecni, lieuexercicefonction, lieunaiss, nom, nombreenfantlegitime, nombrepersonneacharge, nomconjoint, nomemployeur, nommere, nompere, numcni, numtel1, numtel2, prenom, pwd, raisondadhesion, regimematrimonial, residencemere, residencepere, sexe, situationmatrimoniale, villeresidence) VALUES ('18JUN813', '', '', '', NULL, '2018-06-27', '2018-06-14', '', NULL, 'English', '', '', '', NULL, '', 'iuiuy oi', 0, 2, '', '', '', '', NULL, NULL, NULL, 'hijhkjh;', 'm262', '', NULL, '', '', 'F', 'Divorcé(e)', '');
+INSERT INTO public.membres (matricule, activiteprofessionelle, adresse, adresseemployeur, dateadhesion, datedelivrancecni, datenaiss, email, fonction, langue1, lieuactiviteprof, lieuadhesion, lieudelivrancecni, lieuexercicefonction, lieunaiss, nom, nombreenfantlegitime, nombrepersonneacharge, nomconjoint, nomemployeur, nommere, nompere, numcni, numtel1, numtel2, prenom, pwd, raisondadhesion, regimematrimonial, residencemere, residencepere, sexe, situationmatrimoniale, villeresidence) VALUES ('18JUN722', '', '', '', NULL, '2018-06-27', '2018-06-27', '', NULL, 'Francais', '', '', '', NULL, '', 'opkpo', 0, 0, '', '', '', '', NULL, NULL, NULL, 'jkp[''', 'l081', '', NULL, '', '', 'F', 'Célibataire', '');
+INSERT INTO public.membres (matricule, activiteprofessionelle, adresse, adresseemployeur, dateadhesion, datedelivrancecni, datenaiss, email, fonction, langue1, lieuactiviteprof, lieuadhesion, lieudelivrancecni, lieuexercicefonction, lieunaiss, nom, nombreenfantlegitime, nombrepersonneacharge, nomconjoint, nomemployeur, nommere, nompere, numcni, numtel1, numtel2, prenom, pwd, raisondadhesion, regimematrimonial, residencemere, residencepere, sexe, situationmatrimoniale, villeresidence) VALUES ('18JUL846', 'iok', '', '', '2018-07-08', '2018-07-04', '2018-07-03', 'ghbj@hi.com', NULL, 'Francais', '', 'ijppl', 'cfgvh', NULL, 'nkll', 'NTEP NJI', 1, 1, 'yyhuj', '', '', '', 691212181, 6549222, NULL, 'Ernest', 'f200', 'gujhio', 'Biens Communs', '', '', 'M', 'Marié(e)', 'lklk');
+INSERT INTO public.membres (matricule, activiteprofessionelle, adresse, adresseemployeur, dateadhesion, datedelivrancecni, datenaiss, email, fonction, langue1, lieuactiviteprof, lieuadhesion, lieudelivrancecni, lieuexercicefonction, lieunaiss, nom, nombreenfantlegitime, nombrepersonneacharge, nomconjoint, nomemployeur, nommere, nompere, numcni, numtel1, numtel2, prenom, pwd, raisondadhesion, regimematrimonial, residencemere, residencepere, sexe, situationmatrimoniale, villeresidence) VALUES ('18JUL331', '', '', '', NULL, '2018-07-08', '2018-07-08', '', NULL, 'Francais', '', '', '', NULL, '', '', 0, 0, '', '', '', '', NULL, NULL, NULL, '', 'd439', '', NULL, '', '', 'M', 'Célibataire', '');
+INSERT INTO public.membres (matricule, activiteprofessionelle, adresse, adresseemployeur, dateadhesion, datedelivrancecni, datenaiss, email, fonction, langue1, lieuactiviteprof, lieuadhesion, lieudelivrancecni, lieuexercicefonction, lieunaiss, nom, nombreenfantlegitime, nombrepersonneacharge, nomconjoint, nomemployeur, nommere, nompere, numcni, numtel1, numtel2, prenom, pwd, raisondadhesion, regimematrimonial, residencemere, residencepere, sexe, situationmatrimoniale, villeresidence) VALUES ('18JUL412', '', '', '', NULL, '2018-07-09', '2018-07-04', 'fghdvh@ghg.com', NULL, 'Francais', '', '', '', NULL, 'knmbnb', 'Jasrt', 1, 1, '', '', '', '', 4242425, 45324341, NULL, 'kkjh', 'r211', '', NULL, '', '', 'M', 'Marié(e)', 'cgh');
+INSERT INTO public.membres (matricule, activiteprofessionelle, adresse, adresseemployeur, dateadhesion, datedelivrancecni, datenaiss, email, fonction, langue1, lieuactiviteprof, lieuadhesion, lieudelivrancecni, lieuexercicefonction, lieunaiss, nom, nombreenfantlegitime, nombrepersonneacharge, nomconjoint, nomemployeur, nommere, nompere, numcni, numtel1, numtel2, prenom, pwd, raisondadhesion, regimematrimonial, residencemere, residencepere, sexe, situationmatrimoniale, villeresidence) VALUES ('18JUL677', '', '', '', NULL, '2018-07-09', '2018-07-09', '', NULL, 'Francais', '', '', '', NULL, '', '', 0, 0, '', '', '', '', NULL, NULL, NULL, '', 's855', '', NULL, '', '', 'M', 'Célibataire', '');
+
+
+--
+-- TOC entry 2201 (class 0 OID 43644)
+-- Dependencies: 198
+-- Data for Name: sanction; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2203 (class 0 OID 43652)
+-- Dependencies: 200
+-- Data for Name: tontine; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2204 (class 0 OID 43658)
+-- Dependencies: 201
+-- Data for Name: type_versement; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.type_versement (id, label) VALUES ('fs', 'Fond de Solidarité');
+INSERT INTO public.type_versement (id, label) VALUES ('fa', 'Fond ACDE');
+INSERT INTO public.type_versement (id, label) VALUES ('col', 'Collation');
+INSERT INTO public.type_versement (id, label) VALUES ('c1', 'c10');
+INSERT INTO public.type_versement (id, label) VALUES ('c2', 'c100');
+INSERT INTO public.type_versement (id, label) VALUES ('es', 'Epargne Scolaire');
+INSERT INTO public.type_versement (id, label) VALUES ('ea', 'Epargne Anuuelle');
+INSERT INTO public.type_versement (id, label) VALUES ('rem', 'Remboursement Emprunt');
+INSERT INTO public.type_versement (id, label) VALUES ('ip', 'Intérêt Payé');
+INSERT INTO public.type_versement (id, label) VALUES ('ret', 'Retard');
+INSERT INTO public.type_versement (id, label) VALUES ('abs', 'Absence');
+INSERT INTO public.type_versement (id, label) VALUES ('ton', 'Tontine');
+INSERT INTO public.type_versement (id, label) VALUES ('ins', 'Inscription');
+
+
+--
+-- TOC entry 2199 (class 0 OID 33874)
+-- Dependencies: 196
+-- Data for Name: utilisateur; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2208 (class 0 OID 43725)
+-- Dependencies: 205
+-- Data for Name: versement; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (3, '2018-06-27', 'c1', 10000, '18JUN813');
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (2, '2018-06-27', 'ins', 500, '18JUN813');
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (5, '2018-06-27', 'c1', 10000, '18JUN722');
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (4, '2018-06-27', 'ins', 500, '18JUN722');
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (7, '2018-06-27', 'c1', 10000, '18JUN760');
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (6, '2018-06-27', 'ins', 500, '18JUN760');
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (8, '2018-06-27', 'c2', 100000, '18JUN722');
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (9, '2018-07-05', 'fa', 8000, '18JUN760');
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (10, '2018-07-05', 'c1', 10000, '18JUN722');
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (11, '2018-07-05', 'c1', 10000, '18JUN760');
+INSERT INTO public.versement (id, dateversement, type, montant, idmembre) VALUES (12, '2018-07-05', 'fs', 12000, '18JUN760');
+
+
+--
+-- TOC entry 2220 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: epargne_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.epargne_id_seq', 1, false);
+
+
+--
+-- TOC entry 2221 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: sanction_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.sanction_id_seq', 1, false);
+
+
+--
+-- TOC entry 2222 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: tontine_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tontine_id_seq', 1, false);
+
+
+--
+-- TOC entry 2223 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: versement_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.versement_id_seq', 12, true);
+
+
+-- Completed on 2018-07-10 22:06:15
+
+--
+-- PostgreSQL database dump complete
+--
+

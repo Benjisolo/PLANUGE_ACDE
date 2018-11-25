@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+             <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+
+              <!-- search form (Optional) -->
+              <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                  <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                  <span class="input-group-btn">
+                      <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                      </button>
+                    </span>
+                </div>
+              </form>
+              <!-- /.search form -->
+
+              <!-- Sidebar Menu -->
+              <h:form>
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="header">HEADER</li>
+                        <!-- Tableau de board -->
+                        <li class="active"><h:outputLink value="#{request.contextPath}/faces/index.xhtml" rendered='#{loginBean.isMenuRendered("dashboard")}'><i class="fa fa-dashboard fa-2x"></i><span style="margin-left: 15px"> Tableau de Board</span></h:outputLink></li>
+                        <!-- Gestion des membres -->
+                        <li class="treeview">
+                            <a href="#"><i class="ion ion-android-people" style="font-size: 2.5em;"></i><span style="margin-left: 15px"> Gestion Membres</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><h:outputLink value="#{request.contextPath}/faces/pages/inscription.xhtml" rendered='#{loginBean.isMenuRendered("inscription")}'><i class="fa fa-plus-circle"/>Nouveau Membre</h:outputLink></li>
+                                <li><h:outputLink value="#{request.contextPath}/faces/pages/liste_membres.xhtml" rendered='#{loginBean.isMenuRendered("listeMembres")}'><i class="fa fa-list-alt"/>Liste des Membres</h:outputLink></li>
+                            </ul>
+                        </li>
+                        <!-- Versements -->
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-money fa-2x"></i><span style="margin-left: 15px"> Versements</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><h:outputLink value="#{request.contextPath}/faces/pages/historique_versements.xhtml" rendered='#{loginBean.isMenuRendered("historiqueVersements")}'><i class="fa fa-history"></i><span> Historique</span></h:outputLink></li>
+                                <li><h:outputLink value="#{request.contextPath}/faces/pages/types_versement.xhtml" rendered='#{loginBean.isMenuRendered("typesVersement")}'><i class="fa fa-wrench"/> Types Versement</h:outputLink></li>
+                            </ul>
+                        </li>
+                    </ul>
+              </h:form>
+              <!-- /.sidebar-menu -->
+            </section>
+            <!-- /.sidebar -->
+        </ui:composition>
+    </h:body>
+</html>
+

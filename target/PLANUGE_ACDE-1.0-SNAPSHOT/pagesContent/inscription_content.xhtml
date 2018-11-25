@@ -1,0 +1,751 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Inscription
+                    <small>Ajouter un nouveau membre</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Inscription</li>
+                </ol>
+            </section>
+            
+            <!-- Main content -->
+            <section class="content container-fluid">
+                <h:form id="todoForm">
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <div>
+                                <!-- Custom Tabs -->
+                                <div class="nav-tabs-custom">
+                                    <!-- Button de deplacement Js -->
+                                    <div style="display: none">
+                                        <a href="#tab_1" data-toggle="tab" id="s1">s1</a>
+                                        <a href="#tab_2" data-toggle="tab" id="s2">s2</a>
+                                        <a href="#tab_3" data-toggle="tab" id="s3">s3</a>
+                                        <a href="#tab_4" data-toggle="tab" id="s4">s4</a>
+                                        <a href="#tab_5" data-toggle="tab" id="s5">s5</a>
+                                    </div>
+                                    <!-- Button de deplacement Js -->
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a id="a1">Recommandations</a></li>
+                                        <li><a id="a2">Profil ></a></li>
+                                        <li><a id="a3">Situation Sociale ></a></li>
+                                        <li><a id="a4">Motivations ></a></li>
+                                        <li><a id="a5">Validation</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <!-- tab_1 -->
+                                        <div class="tab-pane active" id="tab_1">
+                                            <b>Veuillez lire attentivement ces recommandations avant de poursuivre.</b>
+                                            <div class="tab-pane active" id="Infosbefore" role="tabpanel">
+                                                <div class="callout callout-warning" style="margin: 2em; list-style: none">
+                                                    <h4><i class="fa fa-warning"/>&nbsp;&nbsp; Alert!</h4>
+                                                    <ul><li>Remplissez les champs avec des informations correctes </li></ul>
+                                                </div>
+                                                <div class="callout callout-info" style="margin: 2em; list-style: none">
+                                                    <h4><i class="fa fa-info-circle"/>&nbsp;&nbsp; Infos!</h4>
+                                                    <ul>
+                                                        <li>En ce qui concerne le "né(e) vers", la date de naissance ici est le 01/01/1990 par exemple</li>
+                                                        <li>Uniquement les champs suivis de <b>*</b> (etoile) sont obligatoires</li>
+                                                    </ul>
+                                                    <p><i class="fa fa-hand-o-right"/>&nbsp;&nbsp; Clicker sur <b>Commencer</b> pour démmarrer l'inscription</p>
+                                                </div>
+                                                <!--<div class="callout callout-danger" style="margin: 2em; list-style: none">
+                                                    <h4><i class="fa fa-ban"/>&nbsp; Important!</h4>
+                                                    <p>Uniquement les champs suivis de * sont obligatoires</p>
+                                                </div>-->
+                                            </div>
+
+                                            <button type="button" id="b1" onclick="wizard(this.id)" class="btn pull-right btn-success btn-sm">Commencer</button>
+                                        </div>
+                                        <!-- tab_2 -->
+                                        <div class="tab-pane" id="tab_2">
+                                            <legend class="text-bold"><i class="fa fa-user"/>&nbsp;&nbsp; Informations Personnelles</legend>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label col-form-label">#{lang['nom.label']} : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-9 f-error">
+                                                            <h:inputText class="form-control f-error wcontrol wcontrol-nom" id="nom"  value="#{inscriptionBean.membre.nom}"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label col-form-label">#{lang['prenom.label']} : </label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <h:inputText class="form-control wcontrol ignore" id="prenom" value="#{inscriptionBean.membre.prenom}"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label col-form-label">#{lang['sexe.label']} : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <h:selectOneRadio class="custom-control custom-radio wcontrol" id="sexe" value="#{inscriptionBean.sexe}">
+                                                                <f:selectItem itemValue="Femme" itemLabel="Femme" />
+                                                                <f:selectItem itemValue="Homme" itemLabel="Homme" />
+                                                            </h:selectOneRadio>
+                                                        </div>
+                                                    </div> 
+
+                                                    <div class="form-group row">
+                                                        <div class="col-md-5">
+                                                            <label class="control-label col-form-label">#{lang['dateDeNaissance.label']} : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                <h:inputText  class="form-control pickadate-labels wcontrol" id="dateNaissance" value="#{inscriptionBean.dateNaiss}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-md-5">
+                                                            <label class="control-label col-form-label">#{lang['lieuDeNaissance.label']} : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <h:inputText class="form-control wcontrol" id="lieuNaissance" value="#{inscriptionBean.membre.lieunaiss}"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row margin-top-10">
+                                                        <div class="col-md-5">
+                                                            <label class="control-label col-form-label">#{lang['vileResidence.label']} : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-map-marker"></i>
+                                                                </span>
+                                                                <h:inputText class="form-control wcontrol" id="ville" value="#{inscriptionBean.membre.villeresidence}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label col-form-label">#{lang['langue.label']} : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-language"></i>
+                                                                </span>
+                                                                <h:selectOneMenu  class="form-control wcontrol ignore" id="langue1" value="#{inscriptionBean.membre.langue1}">
+                                                                    <f:selectItem itemValue="Francais" itemLabel="Français" />
+                                                                    <f:selectItem itemValue="English" itemLabel="English" />
+                                                                </h:selectOneMenu>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label col-form-label">#{lang['numTel.label']} : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                                <h:inputText class="form-control wcontrol" id="telephone" value="#{inscriptionBean.membre.numtel1}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Numero de CNI : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <h:inputText class="form-control wcontrol" id="ncni" value="#{inscriptionBean.membre.numcni}"/>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Date de delivrance CNI : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-calendar"/>
+                                                                </span>
+                                                                <h:inputText class="form-control pickadate-labels wcontrol" id="datecni" value="#{inscriptionBean.dateDelivranceCni}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Lieu de delivrance CNI : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <h:inputText class="form-control wcontrol" id="lieuCni" value="#{inscriptionBean.membre.lieudelivrancecni}"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label col-form-label">Email : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-envelope"></i>
+                                                                </span>
+                                                                <h:inputText class="form-control wcontrol mail" id="email" value="#{inscriptionBean.membre.email}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label col-form-label">Boite Postale :</label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-address-card"></i></span>
+                                                                <h:inputText class="form-control wcontrol ignore" id="bp" value="#{inscriptionBean.membre.adresse}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+
+                                            <legend class="text-bold"><i class="fa fa-level-up"/>&nbsp;&nbsp; Informations Parentales </legend>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Noms &amp; Prénom de la Mère : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <h:inputText class="form-control wcontrol" id="nomMere" value="#{inscriptionBean.membre.nommere}"/>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Lieu de residence de la Mère :</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-map-marker"></i>
+                                                                </span>
+                                                                <h:inputText class="form-control wcontrol ignore" id="residMere" value="#{inscriptionBean.membre.residencemere}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Noms &amp; Prénom du Père</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-user"></i>
+                                                                </span>
+                                                                <h:inputText class="form-control wcontrol ignore" id="nomPere" value="#{inscriptionBean.membre.nompere}"/>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Lieu de residence du Père</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-map-marker"></i>
+                                                                </span>
+                                                                <h:inputText class="form-control wcontrol ignore"  requiredMessage="N° Tel Père requis :etape Autres Contact" id="residPere" value="#{inscriptionBean.membre.residencepere}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <button type="button" id="b2" onclick="wizard(this.id)" class="btn pull-right btn-success btn-sm" style="margin-top: 2em">Suivant ></button>
+                                            <button type="button" id="ba2" class="btn pull-left btn-primary btn-sm" onclick="precedent(this.id)"> Precedent</button>
+
+                                        </div>
+                                        <!-- tab_3 -->
+                                        <div class="tab-pane" id="tab_3">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <legend class="text-bold"><i class="fa fa-heart"/>&nbsp;&nbsp; Civilité</legend>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-md-5">
+                                                            <label class="control-label col-form-label">Situation Matrimoniale : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-life-ring"></i></span>
+                                                                <h:selectOneMenu class="form-control wcontrol" id="situationMat" value="#{inscriptionBean.membre.situationmatrimoniale}">
+                                                                    <f:selectItem itemValue="Célibataire" itemLabel="Célibataire" />
+                                                                    <f:selectItem itemValue="Marié(e)" itemLabel="Marié(e)" />
+                                                                    <f:selectItem itemValue="Divorcé(e)" itemLabel="Divorcé(e)" />
+                                                                    <f:selectItem itemValue="Veuf/Veuve" itemLabel="Veuf/veuve" />
+                                                                </h:selectOneMenu>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row wcontrol" id="rowRegMat">
+                                                        <div class="col-md-5">
+                                                            <label class="control-label col-form-label">Regime Matrimoniale : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-life-ring"></i></span>
+                                                                <h:selectOneMenu class="form-control wcontrol" id="regimeMat" value="#{inscriptionBean.membre.regimematrimonial}">
+                                                                    <f:selectItem/>
+                                                                    <f:selectItem itemValue="Biens Communs" itemLabel="Biens Communs" />
+                                                                    <f:selectItem itemValue="Biens Séparés" itemLabel="Biens Séparés" />
+                                                                </h:selectOneMenu>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row wcontrol" id="rowConjoint">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Noms du Conjoint : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <h:inputText class="form-control wcontrol ignore" id="conjoint" value="#{inscriptionBean.membre.nomconjoint}"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+                                                    <legend class="text-bold"><i class="fa fa-home"/>&nbsp;&nbsp; Charges Familliales</legend>
+                                                    
+                                                    <div class="form-group row">
+                                                        <div class="col-md-8">
+                                                            <label class="control-label col-form-label">Nombre d'Enfants Légitimes : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-4" style="width: 10.5em">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon btn btn-default" id="moins_1"><i class="fa fa-minus"></i></span>
+                                                                <h:inputText class="form-control wcontrol number" autocomplete="off" id="nbrEnfantLeg" maxlength="2" value="#{inscriptionBean.membre.nombreenfantlegitime}"/>
+                                                                <span class="input-group-addon btn btn-default" id="plus_1"><i class="fa fa-plus"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <div class="col-md-8">
+                                                            <label class="control-label col-form-label">Nombre de personnes à charge : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-4" style="width: 10.5em">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon btn btn-default" id="moins_2"><i class="fa fa-minus"></i></span>
+                                                                <h:inputText class="form-control wcontrol number" id="nbrPersAcharge" maxlength="2" value="#{inscriptionBean.membre.nombrepersonneacharge}"/>
+                                                                <span class="input-group-addon btn btn-default" id="plus_2"><i class="fa fa-plus"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6">
+                                                    <legend class="text-bold"><i class="fa fa-briefcase"/>&nbsp;&nbsp; Situation Professionnelle</legend>
+                                                    
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Activité Professionnelle : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-briefcase"></i>
+                                                                </span>
+                                                                <h:inputText class="form-control wcontrol"  requiredMessage="Activite professionnelle Requise : Etape Situation professionnelle" id="activitePro" value="#{inscriptionBean.membre.activiteprofessionelle}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Lieu d'exercice : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <h:inputText class="form-control wcontrol"  requiredMessage="Lieu exercice Activite professionnelle Requise : Etape Situation professionnelle" id="lieuExerciceActivitePro" value="#{inscriptionBean.membre.lieuactiviteprof}"/>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Employeur :</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <h:inputText class="form-control wcontrol ignore"  requiredMessage="Employeur Requis : Etape Situation professionnelle" id="employeur" value="#{inscriptionBean.membre.nomemployeur}"/>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label col-form-label">Adresse Employeur :</label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-map-marker"/>
+                                                                </span>
+                                                                <h:inputText class="form-control wcontrol ignore" id="adresseEmployeur" value="#{inscriptionBean.membre.adresseemployeur}"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <button type="button" id="b3" onclick="wizard(this.id)" class="btn pull-right btn-success btn-sm">Suivant ></button>
+                                            <button type="button" id="ba3" class="btn pull-left btn-primary btn-sm" onclick="precedent(this.id)"> Precedent</button>
+
+                                        </div>
+                                        <!-- tab_4 -->
+                                        <div class="tab-pane" id="tab_4">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <legend class="text-bold"><i class="fa fa-users"/>&nbsp;&nbsp; Au sujet de l'Association</legend>
+                                                    
+                                                    <div class="form-group row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label col-form-label">Raisons d'hadésion : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <h:inputTextarea cols="5" class="form-control wcontrol" value="#{inscriptionBean.membre.raisondadhesion}" id="raisonAdh">
+                                                            </h:inputTextarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <div class="col-md-5">
+                                                            <label class="control-label col-form-label">Date d'Inscription : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                <h:inputText  class="form-control pickadate-labels wcontrol" id="dateIns" value="#{inscriptionBean.dateAdhesion}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <div class="col-md-5">
+                                                            <label class="control-label col-form-label">Lieu d'Inscription : <code>*</code></label>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                                                                <h:inputText  class="form-control wcontrol" id="lieuIns" value="#{inscriptionBean.membre.lieuadhesion}" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                            </div>
+                                            
+                                            <button type="button" id="b4" class="btn pull-right btn-success btn-sm" onclick="wizard(this.id)">Suivant ></button>
+                                            <button type="button" id="ba4" class="btn pull-left btn-primary btn-sm" onclick="precedent(this.id)">Precedent</button>
+
+                                        </div>
+                                        <!-- tab_5 -->
+                                        <div class="tab-pane" id="tab_5">
+                                            <legend class="text-bold margin-top-10"><i class="fa fa-history"/>&nbsp;&nbsp; Recapitulatif</legend>
+                                            <div class='row' style='margin-bottom: 30px'>
+                                                <!-- Infos Perso -->
+                                                <div class="col-md-6">
+                                                  <div class="box-header with-border">
+                                                    <i class="fa fa-user"/>
+                                                    <h3 class="box-title text-bold" style='text-decoration: underline;'>Vos Informations Personnelles</h3>
+                                                  </div>
+                                                  <!-- /.box-header -->
+                                                  <div>
+                                                      <table class="custom-control table table-striped">
+                                                        <tr>
+                                                            <td ><i>Nom et Prenom : </i></td>
+                                                            <td><b><h4 class="recap text-bold"><span id="recapNom"></span> <span id="recapPrenom"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Sexe : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapSexe"></span></h4></b></td>
+                                                        </tr>
+                                                      <tr>
+                                                          <td><i>Date de Naissance : </i></td>
+                                                          <td><b><h4><span class="recap text-bold" id="recapDateNais"></span></h4></b></td>
+                                                      </tr>
+                                                      <tr>
+                                                          <td><i>Lieu de Naissance : </i></td>
+                                                          <td><b><h4><span class="recap text-bold" id="recapLieuNais"></span></h4></b></td>
+                                                      </tr>
+                                                        <tr >
+                                                            <td ><i>Ville de Residence : </i></td>
+                                                            <td><b><h4 class="box-title" ><span class="recap text-bold" id="recapVilleResi"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Langues Parlées : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapLangue1"></span> <span class="recap text-bold" id="langue2"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Numero de Telephone : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapTel"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Numero de CNI : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapNumCni"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Date de delivrance de la CNI : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapDateCni"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Lieu de delivrance de la CNI : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapLieuCni"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Adresse Email: </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapEmail"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Boite Postal/Adresse : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapAdr"></span></h4></b></td>
+                                                        </tr>
+                                                    </table>
+                                                  </div>
+                                                  <!-- /.box-body -->
+                                                </div>
+
+                                                <!-- Civilite -->
+                                                <div class="col-md-6">
+                                                    <div class="box-header with-border">
+                                                      <i class="fa fa-heart"/>
+                                                      <h3 class="box-title text-bold" style='text-decoration: underline;'>Civilité</h3>
+                                                    </div>
+                                                    <!-- /.box-header -->
+                                                    <div>
+                                                        <table class="custom-control table table-striped" cellspacing="4">
+                                                            <tr>
+                                                                <td><i>Situation Matrimoniale : </i></td>
+                                                                <td><b><h4><span class="recap text-bold" id="recapSituationMat"></span></h4></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i>Regime Matrimoniale : </i></td>
+                                                                <td><b><h4><span class="recap text-bold" id="recapRegimeMat"></span></h4></b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i>Nom Conjoint : </i></td>
+                                                                <td><b><h4><span class="recap text-bold" id="recapConjoint"></span></h4></b></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <!-- /.box-body -->
+                                                </div>
+
+                                                <!-- Charges Familliales -->
+                                                <div class="col-md-6">
+                                                  <div class="box-header with-border">
+                                                    <i class="fa fa-home"/>
+                                                    <h3 class="box-title text-bold" style='text-decoration: underline;'>Charges Familliales</h3>
+                                                  </div>
+                                                  <!-- /.box-header -->
+                                                  <div>
+                                                    <table class="custom-control table table-striped" cellspacing="4">
+                                                        <tr>
+                                                            <td><i>Nombre d'enfants legitimes : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapNbrEnfLeg"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Nombre d'enfants a charge : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapNbrEnfCharge"></span></h4></b></td>
+                                                        </tr>
+                                                    </table>
+                                                  </div>
+                                                  <!-- /.box-body -->
+                                                </div>
+
+                                                <!-- Infos Professionnelles -->
+                                                <div class="col-md-6">
+                                                    <div>
+                                                      <div class="box-header with-border">
+                                                        <i class="fa fa-briefcase"/>
+                                                        <h3 class="box-title text-bold" style='text-decoration: underline;'>Situation Professionnelle</h3>
+                                                      </div>
+                                                      <!-- /.box-header -->
+                                                      <div>
+                                                        <table class="custom-control table table-striped" >
+                                                          <tr >
+                                                              <td ><i style="margin-right: 20px">Activité Professionnelle : </i></td>
+                                                              <td><b><h4 class="box-title" ><span class="recap text-bold" id='recapActivProf'></span></h4></b></td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td><i>Lieu d'exercice : </i></td>
+                                                              <td><b><h4><span class="recap text-bold" id="recapLieuExercActiv"></span></h4></b></td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td><i>Employeur : </i></td>
+                                                              <td><b><h4><span class="recap text-bold" id="recapEmpl"></span></h4></b></td>
+                                                          </tr>
+                                                            <tr>
+                                                                <td><i>Adresse Employeur : </i></td>
+                                                                <td><b><h4><span class="recap text-bold" id="recapAdrEmpl"></span></h4></b></td>
+                                                            </tr>
+                                                        </table>
+                                                      </div>
+                                                      <!-- /.box-body -->
+                                                    </div>
+                                                    <!-- /.box -->
+                                                </div>
+
+                                                <!-- Infos Parentales -->
+                                                <div class="col-md-6">
+                                                    <div class="box-header with-border">
+                                                      <i class="fa fa-level-up"/>
+                                                      <h3 class="box-title text-bold" style='text-decoration: underline;'>Informations Parentales</h3>
+                                                    </div>
+                                                    <!-- /.box-header -->
+                                                    <div>
+                                                      <table class="custom-control table table-striped">
+                                                        <tr>
+                                                            <td><i>Nom de la Mere : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapNomMere"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Lieu de residence de la Mere : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapResiMere"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Nom du pere  : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapNomPere"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Lieu de residence du pere : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapResiPere"></span></h4></b></td>
+                                                        </tr>
+                                                      </table>
+                                                    </div>
+                                                    <!-- /.box-body -->
+                                                </div>
+
+                                                <!-- Au sujet de l'Association -->
+                                                <div class="col-md-6">
+                                                  <div class="box-header with-border">
+                                                    <i class="fa fa-users"/>
+                                                    <h3 class="box-title text-bold" style='text-decoration: underline;'>Au sujet de l'Association</h3>
+                                                  </div>
+                                                  <!-- /.box-header -->
+                                                  <div>
+                                                    <table class="custom-control table table-striped">
+                                                        <tr>
+                                                            <td><i>Raisons d'adhésion : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapRaisonAdh"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Date d'Inscription : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapDateIns"></span></h4></b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><i>Lieu d'adhésion : </i></td>
+                                                            <td><b><h4><span class="recap text-bold" id="recapLieuAdh"></span></h4></b></td>
+                                                        </tr>
+                                                    </table>
+                                                  </div>
+                                                  <!-- /.box-body -->
+                                                </div>
+
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <code>
+                                                        <label class="control-label col-form-label" style="cursor: pointer">
+                                                            <input type='checkbox' id='confirmation'/> Je confirme que les informations fournies sont exactes ?
+                                                        </label>
+                                                    </code>
+                                                </div>
+                                            </div>
+
+                                            <h:graphicImage library="img" name='loader.gif' width="150px" height="100px" style="display:none" id="loader"/>
+                                            <br/>
+                                            <h:panelGroup style="display:none" layout="block" id="l7">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <h:commandLink  class="btn btn-success btn-sm " id="l4">
+                                                            <i class="fa fa-file-pdf-o"/>&nbsp;&nbsp; Telecharger la fiche de preinscription
+                                                        </h:commandLink>
+                                                        <br/><br/>
+                                                        <h:commandLink  class="btn btn-warning btn-sm " action='#{inscriptionBean.newInscription()}'>
+                                                            <i class="fa fa-edit"/>&nbsp;&nbsp; Nouvelle preinscription
+                                                        </h:commandLink>
+                                                        <br/><br/>
+                                                        <h:commandLink  class="btn btn-default btn-sm ">
+                                                            <i class="fa fa-sign-in"/>&nbsp;&nbsp; Se connecter
+                                                        </h:commandLink>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <table class="custom-control table table-striped">
+                                                            <tr>
+                                                                <td><h:outputText value="Votre Identifiant : "  id="l1"/></td>
+                                                                <td><span class="text-bold "><h:outputText value="#{inscriptionBean.mat}" id="l5" /></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><h:outputText value="Votre Mot de Passe : "  id="l2" /></td>
+                                                                <td><span class="text-bold"><h:outputText value="#{inscriptionBean.pass}" id="l6" /></span></td>
+                                                            </tr>
+                                                        </table>
+
+                                                        <h:outputText value="NB: Vos connection future ce feront grace a ces identifiant. Veuillez a ne pas les oublier."  id="l3" />
+                                                    </div>
+                                                </div>
+                                            </h:panelGroup>
+
+                                            <button type="button" id="ba5" class="btn pull-left btn-primary btn-sm" onclick="precedent(this.id)">Precedent</button>
+                                            <h:commandLink  class="btn pull-right btn-danger btn-sm" action='#{inscriptionBean.valider()}' value="Terminer" rendered="#{!inscriptionBean.submitted}"  id="terminer" onclick="return checked()">
+                                                <f:ajax execute="@all" render="todoForm:l1 todoForm:l2 todoForm:l3 todoForm:l4 todoForm:l5 todoForm:l6  todoForm:terminer" onevent="trait" />
+                                            </h:commandLink>
+                                        </div>
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div>
+                                <!-- nav-tabs-custom -->
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+            </section>
+            <!-- /.content -->
+            
+        </ui:composition>
+    </h:body>
+</html>
+

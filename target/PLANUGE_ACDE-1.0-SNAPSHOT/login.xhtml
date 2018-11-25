@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>PLANUGE_ACDE - Connexion++</title>
+        <!-- Tell the browser to be responsive to sscreen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <!-- Font Awesome -->
+        <h:outputStylesheet library="css" name="font-awesome.min.css"/>
+        <!-- Ionicons -->
+        <h:outputStylesheet library="css" name="ionicons.min.css"/>
+        <!-- Theme style -->
+        <h:outputStylesheet library="css" name="AdminLTE.min.css"/>
+        <h:outputStylesheet library="css" name="AdminLTE_perso.css"/>
+        <h:outputStylesheet library="css" name="blue.css"/>
+        <h:outputStylesheet library="css" name="skin-purple-light.css"/>
+        <!-- Google Font -->
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"/>
+    </h:head>
+    <h:body styleClass="skin-purple-light hold-transition login-page">
+        <div class="login-box">
+            <div class="login-logo">
+              <a href="#">Planuge<b>ACDE</b></a>
+            </div>
+            <!-- /.login-logo -->
+            <div class="login-box-body" style="padding-bottom: 3em">
+                <p class="login-box-msg">Connectez-vous pour démarrer votre session</p>
+
+                <h:form id="loginForm">
+                    <div class="form-group has-feedback">
+                        <h:inputText value="#{loginBean.user.login}" class="form-control" id="matricule" required="true" requiredMessage="Vous devez saisir le matricule."/>
+                        <span class="fa fa-envelope form-control-feedback"></span>
+                    </div>
+                    <h:message id="matriculeMsg" for="matricule" style="color: #ff3227; list-style: none" />
+                    <div class="form-group has-feedback">
+                        <h:inputSecret value="#{loginBean.user.password}"  class="form-control" id="pwd" required="true" requiredMessage="Vous devez saisir le mot de passe."/>
+                        <span class="fa fa-lock form-control-feedback"></span>
+                    </div>
+                    <h:message id="pwdMsg" for="pwd" style="color: #ff3227; list-style: none;" />
+                    <div class="row">
+                        <div class="col-xs-8">
+                          <div class="checkbox icheck">
+                            <label>
+                              <input type="checkbox"/> Remember Me
+                            </label>
+                          </div>
+                        </div>
+                    </div>
+                    <h:messages globalOnly="true" style="color: #ff3227; list-style: none" />
+                    <div class="col-xs-6">
+                        <h:commandLink action="#{loginBean.login()}" class="btn btn-primary btn-block btn-flat">
+                            <i class="fa fa-sign-in pull-left" style="font-size: 1.5em"/> Se connecter
+                        </h:commandLink>
+                    </div>
+                </h:form>
+
+                <a href="#">Mot de passe oublié?</a><br/>
+                <!--<a href="register.html" class="text-center">Register a new membership</a>-->
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+        <!-- /.login-box -->
+        
+        <!-- jQuery 3 -->
+        <h:outputScript library="js" name="jquery.min.js"/>
+        <!-- Bootstrap 3.3.7 -->
+        <h:outputScript library="js" name="bootstrap.min.js"/>
+        <!-- iCheck -->
+        <h:outputScript library="js" name="icheck.min.js"/>
+        <script>
+            $(function () {
+              $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+              });
+            });
+        </script>
+    </h:body>
+</html>
+
